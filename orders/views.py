@@ -1,6 +1,13 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
-# Create your views here.
+from .models import Categories, Menu, Prices
+
+# Orders Views
 def index(request):
-    return HttpResponse("Project 3: TODO")
+    context = {
+        "food_cat": Categories.objects.all(),
+        "menu": Menu.objects.all()
+    }
+    return render(request, "orders/index.html", context)

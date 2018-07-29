@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Orders
+{% endblock %}
+
+{% block body %}
+  <h1>Menu</h1>
+  <u>
+      {% for m in menu %}
+      <li>{{ m }}</li>
+      {% endfor %}
+  </u>
+
+{% endblock %}
