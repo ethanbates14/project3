@@ -6,10 +6,15 @@ Orders
 
 {% block body %}
   <h1>Menu</h1>
-  <u>
-      {% for m in menu %}
-      <li>{{ m }}</li>
+  <ul>
+      {% for cat in food_categories %}
+      <li>{{ cat }}</li>
+      <ul>
+          {% for m in menu %}
+          <li>{{ m }}</li>
+          {% endfor %}
+      </ul>
       {% endfor %}
-  </u>
+  </ul>
 
 {% endblock %}
