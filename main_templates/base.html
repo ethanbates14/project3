@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Italiana" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
         {% block additional_css %}
         {% endblock additional_css %}
     </head>
