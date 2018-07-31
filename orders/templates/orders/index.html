@@ -5,16 +5,43 @@ Orders
 {% endblock %}
 
 {% block body %}
+
+
+<div class="container">
   <h1>Menu</h1>
-  <ul>
-      {% for cat in food_categories %}
-      <li>{{ cat }}</li>
-      <ul>
-          {% for m in menu %}
-          <li>{{ m }}</li>
-          {% endfor %}
-      </ul>
-      {% endfor %}
-  </ul>
+
+{% for category, foods in data.items %}
+<div class="row">
+  <div class="col-sm-12">
+  <h3>{{category}}</h1>
+
+  <div class="row">
+    {% for opt in foods %}
+      {% for k, qset in opt.items %}
+          <div class="col-md-4"> {{ k }} </div>
+
+<!--          <ul>
+            {% for pr in qset.all  %}
+            <li id="{{ pr.id }}"> {{ pr.get_item_size_display }}: {{ pr.item_price }}</li>
+
+            {% endfor %}
+          </ul>-->
+
+
+        {% endfor %}
+     {% endfor %}
+
+  </div>
+
+
+
+
+
+
+</div>
+</div>
+ {% endfor %}
+
+</div> <!-- container -->
 
 {% endblock %}

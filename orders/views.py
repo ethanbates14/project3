@@ -10,17 +10,22 @@ def index(request):
     #build data array
     pin_category = Categories.objects.all()
     pin_foods = Menu.objects.all()
-    food_items = []
+    pin_prices = Prices.objects.all()
 
-    for item in pin_category:
-        food_items.append(item.category_name)
-        query_item = pin_foods.filter(category_id = item.id)
-        print(query_item)
-        print(food_items)
+    food_items = {}
 
+    for cg in pin_category:
+	    food_items[cg.category_name] = []
+	    query_menu = pin_foods.filter(category_id = cg.id)
+	    for fd in query_menu:
+		    new_dict = {}
+		    query_prices = pin_prices.filter(menu_id  = fd.id)
+		    new_dict[fd.menu_item] = query_prices
+		    food_items[cg.category_name].append(new_dict)
+		    #print(food_items)
 
     context = {
-        "food_categories": Categories.objects.all(),
-        "menu": Menu.objects.all()
+        "data": food_items
     }
+
     return render(request, "orders/index.html", context)
