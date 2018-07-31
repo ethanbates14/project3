@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}
-Orders
-{% endblock %}
+{% block title %}Orders{% endblock %}
+
+{% block additional_css %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'orders/styles.css' %}">
+
+{% endblock additional_css %}
+
 
 {% block body %}
 
@@ -18,7 +24,7 @@ Orders
   <div class="row">
     {% for opt in foods %}
       {% for k, qset in opt.items %}
-          <div class="col-md-4"> {{ k }} </div>
+          <div class="col-sm-4"><div class="inner">{{ k }}</div></div>
 
 <!--          <ul>
             {% for pr in qset.all  %}

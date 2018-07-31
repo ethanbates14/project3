@@ -1,0 +1,10 @@
+
+.col-sm-4{
+    margin-bottom: 8px;
+}
+
+.inner {
+    padding: 15px;
+    border:solid;
+    border-width:thin;
+}
