@@ -3,3 +3,15 @@
     font-family: 'Italiana', serif;
     background: linear-gradient(0.90turn, #009246, #ffffff, #ce2b37);
 }
+
+body {
+    background-color: #EEEEEE;
+}
+
+.ita_header {
+    font-family: 'Italiana', serif;
+}
+
+.nav-item {
+    font-size:32px;
+}

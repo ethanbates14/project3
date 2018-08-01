@@ -12,14 +12,13 @@
 
 {% block body %}
 
-
 <div class="container">
-  <h1>Menu</h1>
+  <h1 class="ita_header display-3 text-center">Menu</h1>
 
 {% for category, foods in data.items %}
 <div class="row">
   <div class="col-sm-12">
-  <h3>{{category}}</h1>
+  <h3 class="ita_header">{{category}}</h1>
 
   <div class="row">
     {% for opt in foods %}
@@ -38,11 +37,6 @@
      {% endfor %}
 
   </div>
-
-
-
-
-
 
 </div>
 </div>

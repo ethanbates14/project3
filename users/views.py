@@ -14,8 +14,8 @@ def index(request):
     return render(request, "users/user.html", context)
 
 def login_view(request):
-    username = request.POST["username"]
-    password = request.POST["password"]
+    username = request.POST.get('username')
+    password = request.POST.get('password')
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
@@ -25,4 +25,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, "users/login.html", {"message": "Logged out."})
+    return render(request, "users/login.html")
+
+def register_view(request):
+    return render(request, "users/register.html")
