@@ -3,8 +3,22 @@
     margin-bottom: 8px;
 }
 
-.inner {
+.btn-outline-success {
     padding: 15px;
-    border:solid;
-    border-width:thin;
+    font-weight:bold;
+}
+
+.menu_category {
+    font-family: 'Italiana', serif;
+    font-weight:bold;
+}
+
+.add-min-quan {
+    margin-left:10px;
+    margin-right:10px;
+
+}
+
+.add-min-quan:active {
+    color:#007BFF;
 }

@@ -4,10 +4,15 @@
 {% block title %}Orders{% endblock %}
 
 {% block additional_css %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'orders/styles.css' %}">
-
+<link rel="stylesheet" type="text/css" href="{% static 'orders/styles.css' %}">'
 {% endblock additional_css %}
+
+{% block additional_js %}
+<script src="{% static 'orders/menuorders.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% endblock additional_js %}
 
 
 {% block body %}
@@ -18,20 +23,55 @@
 {% for category, foods in data.items %}
 <div class="row">
   <div class="col-sm-12">
-  <h3 class="ita_header">{{category}}</h1>
+  <h3 class="menu_category">{{category}}</h1>
 
   <div class="row">
     {% for opt in foods %}
       {% for k, qset in opt.items %}
-          <div class="col-sm-4"><div class="inner">{{ k }}</div></div>
+          <div class="col-sm-4">
+          <!-- Modal Button -->
+              <button class="btn btn-outline-success btn-block" type="button" data-toggle="modal" data-target="#{{ k|lower|slugify }}">
+                {{ k }}
+              </button>
 
-<!--          <ul>
-            {% for pr in qset.all  %}
-            <li id="{{ pr.id }}"> {{ pr.get_item_size_display }}: {{ pr.item_price }}</li>
+          </div>
 
-            {% endfor %}
-          </ul>-->
+          <!-- Modal -->
+          <div class="modal fade" id="{{ k|lower|slugify }}" tabindex="-1" role="dialog" aria-labelledby="{{ k|lower|slugify }}-ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="{{ k|lower|slugify }}-ModalLabel">{{ k }}</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
 
+                <div class="modal-body text-center">
+                  <h4>Quantity</h4>
+                  <div class="row justify-content-md-center">
+                    <div class="col-md-3">
+                      <input class="form-control" type="number" name="quantity" min="1" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-body text-center">
+                    {% for pr in qset.all  %}
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="{{ pr.id }}" value="{{ pr.id }}">
+                        <span>{{ pr.get_item_size_display }}: ${{ pr.item_price }}</span>
+                      </label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="add-to-cart btn btn-primary">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
         {% endfor %}
      {% endfor %}
