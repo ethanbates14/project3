@@ -38,5 +38,16 @@ class Prices(models.Model):
     item_price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.item_size} {self.item_price}"
+        return f"{self.menu_id} {self.item_size} {self.item_price}"
 
+class Orders(models.Model):
+    ORDER_STATUS = (
+        ('P', 'Pending'),
+        ('C', 'Completed'),
+    )
+    user_id = models.IntegerField()
+    item_number = models.ForeignKey(Prices, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    order_details = models.CharField(max_length=250,blank=True)
+    order_date = models.DateField()
+    order_status = models.CharField(max_length=1, choices=ORDER_STATUS,default="P")

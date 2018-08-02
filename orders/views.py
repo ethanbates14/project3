@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from .models import Categories,Options,Menu,Topping,Prices
+from .models import Categories,Options,Menu,Topping,Prices,Orders
 
 # Orders Views
 def index(request):
@@ -37,4 +37,16 @@ def index(request):
     return render(request, "orders/index.html", context)
 
 def checkout(request):
-    return render(request, "orders/checkout.html")
+    current_user = request.user
+    orderdetails = Orders.objects.filter(user_id = current_user.id)
+
+    if request.method == "POST":
+        orderdetails.filter(order_status = 'P').update(order_status = 'C')
+        return render(request, "users/user.html",context)
+    else:
+        orderdetails.filter(order_status = 'P')
+
+    context = {
+        "myorders": orderdetails
+    }
+    return render(request, "orders/checkout.html",context)

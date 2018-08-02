@@ -10,7 +10,30 @@
         <div class="col-sm-6">
             <h1 class="display-3">Hello, {{ user.first_name }}</h1>
             <h4>Your Order History</h4>
-            <h1>{{user.id }}</h1>
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col">OrderID</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Details</th>
+                </tr>
+              </thead>
+                  <tbody>
+                      {% for od in myorders %}
+                    <tr>
+                      <td>{{ od.id }}</td>
+                      <td>{{ od.item_number.menu_id }}</td>
+                      <td>{{ od.quantity }}</td>
+                      <td>{{ od.item_number.item_price }}</td>
+                      <td>{{ od.order_date }}</td>
+                      <td>{{ od.details }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
         </div>
         <div class="col-sm-6">
             <h1 class="display-3">About Us</h1>

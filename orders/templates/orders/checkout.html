@@ -8,9 +8,35 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="display-3">Hello, {{ user.first_name }}</h1>
-            <h4>Complete your Order</h4>
-            <h1>{{user.id }}</h1>
+            <h1 class="display-3 text-center">Hello, {{ user.first_name }}</h1>
+            <h4 class="text-center">Complete your Order</h4>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">OrderID</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Details</th>
+                </tr>
+              </thead>
+                  <tbody>
+                      {% for od in myorders %}
+                    <tr>
+                      <td>{{ od.id }}</td>
+                      <td>{{ od.item_number.menu_id }}</td>
+                      <td>{{ od.quantity }}</td>
+                      <td>{{ od.item_number.item_price }}</td>
+                      <td>{{ od.order_date }}</td>
+                      <td>{{ od.details }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+            <form action"user/" method"POST">
+            <button type="submit" class="btn btn-success">Complete</button>
+            </form>
         </div>
     </div>
 </div>

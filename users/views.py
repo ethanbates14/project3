@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from orders.models import Orders
 
 # users views
 
@@ -61,4 +62,16 @@ def logout_view(request):
     return render(request, "users/login.html")
 
 def user_home(request):
-    return render(request, "users/user.html")
+    current_user = request.user
+    print(current_user.is_superuser)
+
+    #admin show all
+    if current_user.is_superuser:
+        orderdetails = Orders.objects.all()
+    else:
+        orderdetails = Orders.objects.filter(user_id = current_user.id)
+
+    context = {
+        "myorders": orderdetails
+    }
+    return render(request, "users/user.html",context)
