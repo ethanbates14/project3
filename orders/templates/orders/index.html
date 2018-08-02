@@ -106,12 +106,12 @@
         <div class="col-sm-12">
           <h1 class=" text-center menu_category">Cart</h1>
           <hr>
-          <h3>Order Total: <span id="total-order-cost"><span>0.00</span></h3>
+          <h3>Order Total: &#x24;<span id="total-order-cost">0</span></h3>
 
-          <form >
-            <button id="btn-place-order" type="button" class="btn btn-block btn-success" type="submit">Checkout</button>
+          <form id="final-checkout" action="{% url 'checkout' %}" method="POST">
+            {% csrf_token %}
               <div id="order-list" class="form-group">
-
+                <button type="submit" id="btn-place-order" type="button" class="btn btn-block btn-success">Checkout</button>
               </div>
           </form>
 
