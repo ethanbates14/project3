@@ -27,7 +27,7 @@
 
   <div class="row">
     {% for opt in foods %}
-      {% for k, qset in opt.items %}
+      {% for k, v in opt.items %}
           <div class="col-sm-4">
           <!-- Modal Button -->
               <button class="btn btn-outline-success btn-block" type="button" data-toggle="modal" data-target="#{{ k|lower|slugify }}">
@@ -57,7 +57,22 @@
                 </div>
 
                 <div class="modal-body text-center">
-                    {% for pr in qset.all  %}
+                  <div class="row">
+
+                    {% for tp in v.toppings.all  %}
+                    <div class="col-sm-6">
+                    <div class="form-check text-left">
+                      <input class="form-check-input" type="checkbox" id="{{ k|lower|slugify}}-{{tp.id}}" value="{{tp.id}}">
+                      <label class="form-check-label" for="inlineCheckbox1"><span>{{ tp.topping_name }}</span></label>
+                    </div>
+                    </div>
+                    {% endfor %}
+
+                  </div>
+                </div>
+
+                <div class="modal-body text-center">
+                    {% for pr in v.prices.all  %}
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="{{ pr.id }}" value="{{ pr.id }}">

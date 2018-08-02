@@ -1,8 +1,33 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h1>Hello, {{ user.first_name }}</h1>
-<ul>
-    <li>Currently logged in as: {{ user.username }}</li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1 class="display-3">Hello, {{ user.first_name }}</h1>
+            <h4>Your Order History</h4>
+            <h1>{{user.id }}</h1>
+        </div>
+        <div class="col-sm-6">
+            <h1 class="display-3">About Us</h1>
+            <p>Noch's has reached a landmark this year......<strong>50 years in business!</strong> We've been feeding Harvard and the surrounding area
+            <strong><u>since 1966!</u></strong>
+            We sell award-winning sicilian-style pizza and mouth-watering steak subs! We have over 500 reviews on
+            <strong><a href="https://www.yelp.com/biz/pinocchios-pizza-and-subs-cambridge" title="Yelp">Yelp</a></strong>
+            --- check it out! Pinocchio's was recently named 1st Runner-up in the 'Boston's Best Pizza Poll'
+            conducted by Eater.com and Top College Pizza Shop by Thrillist.com.
+            </p>
+            <h1 class="display-3">Contact Us</h1>
+            <ul>
+                <li>74 Winthrop Street</li>
+                <li>Harvard Square</li>
+                <li>617-876-4897</li>
+                <li>pinocchiospizza1@gmail.com</li>
+                <li>Twitter @PinocchiosPizz</li>
+                <li>Instagram @pinocchiospizza1</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

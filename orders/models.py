@@ -7,13 +7,26 @@ class Categories(models.Model):
     def __str__(self):
         return self.category_name
 
+class Options(models.Model):
+    option_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.option_name
+
 class Menu(models.Model):
     category_id = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name="category")
     menu_item = models.CharField(max_length=30)
+    menu_options = models.ForeignKey(Options,models.SET_NULL,blank=True,null=True)
 
     def __str__(self):
         return self.menu_item
 
+class Topping(models.Model):
+    topping_name = models.CharField(max_length=30)
+    option_type = models.ForeignKey(Options,models.SET_NULL,blank=True,null=True)
+
+    def __str__(self):
+        return self.topping_name
 
 class Prices(models.Model):
     ITEM_SIZES = (
@@ -26,3 +39,4 @@ class Prices(models.Model):
 
     def __str__(self):
         return f"{self.item_size} {self.item_price}"
+
