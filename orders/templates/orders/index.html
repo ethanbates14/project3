@@ -51,7 +51,7 @@
                   <h4>Quantity</h4>
                   <div class="row justify-content-md-center">
                     <div class="col-md-3">
-                      <input class="form-control" type="number" name="quantity" min="1" value="0">
+                      <input class="input-quantity form-control" type="number" name="quantity" min="1" value="0">
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@
                     {% for tp in v.toppings.all  %}
                     <div class="col-sm-6">
                     <div class="form-check text-left">
-                      <input class="form-check-input" type="checkbox" id="{{ k|lower|slugify}}-{{tp.id}}" value="{{tp.id}}">
+                      <input class="input-toppings form-check-input" type="checkbox" id="{{ k|lower|slugify}}-{{tp.id}}" value="{{tp.id}}">
                       <label class="form-check-label" for="inlineCheckbox1"><span>{{ tp.topping_name }}</span></label>
                     </div>
                     </div>
@@ -75,7 +75,7 @@
                     {% for pr in v.prices.all  %}
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="{{ pr.id }}" value="{{ pr.id }}">
+                        <input class="input-price form-check-input" type="radio" name="inlineRadioOptions" id="{{ pr.id }}" value="{{ pr.item_price }}">
                         <span>{{ pr.get_item_size_display }}: ${{ pr.item_price }}</span>
                       </label>
                     </div>
