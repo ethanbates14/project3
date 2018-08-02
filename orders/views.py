@@ -40,13 +40,15 @@ def checkout(request):
     current_user = request.user
     orderdetails = Orders.objects.filter(user_id = current_user.id)
 
+    context = {
+        "myorders": orderdetails
+    }
+
     if request.method == "POST":
         orderdetails.filter(order_status = 'P').update(order_status = 'C')
         return render(request, "users/user.html",context)
     else:
         orderdetails.filter(order_status = 'P')
 
-    context = {
-        "myorders": orderdetails
-    }
+
     return render(request, "orders/checkout.html",context)

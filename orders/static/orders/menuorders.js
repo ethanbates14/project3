@@ -46,11 +46,10 @@ function getCheckedRadio(parentElem) {
     };
 };
 
-function updateTotal(addNum) {
+function updateTotal(addNum,multiplier) {
     var orderAmt = document.querySelector('#total-order-cost');
     var currentTotal = parseFloat(orderAmt.innerText);
-    console.log(currentTotal);
-    var newTotal = currentTotal + parseFloat(addNum);
+    var newTotal = currentTotal + parseFloat(addNum*multiplier);
     orderAmt.innerText = newTotal.toFixed(2);
 };
 
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             NewItem.readOnly = true;
 
             document.querySelector("#order-list").appendChild(NewItem);
-            updateTotal(itemChose[1]);
+            updateTotal(itemChose[1],itemCount[0]);
 
         }
     };

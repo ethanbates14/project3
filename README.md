@@ -4,7 +4,7 @@ Django - Pinnochios Pizza Restaurant
 
 0) Some base resources across whole project
 -- main.css - used for base html template and extending style project wide
--- mainly bootstrap grids with some google fonts, custom CS, and custom JavaScript 
+-- mainly bootstrap grids with some google fonts, custom CS, and custom JavaScript
 
 1) Users Application
 -- Utilizes built in authentication and login from Django
@@ -22,3 +22,4 @@ Django - Pinnochios Pizza Restaurant
 -- menuorders.JS -is the main driver on the index page - Logic -> grab the modal for the element that is being selcted, and grab what is checked
 -- pass that data to the checkout cart - append to cart and add to total
 -- Form sends data to Checkout Page, then added to DB
+-- [admin|cs50superuser] -- for Django Admin Page
