@@ -21,7 +21,14 @@ function getCheckedRadio(parentElem) {
             return [itemSelect,itemAmt];
         };
     };
+};
 
+function updateTotal(addNum) {
+    var orderAmt = document.querySelector('#total-order-cost')
+    var currentTotal = Number(orderAmt.innerHTML);
+    var newTotal = currentTotal + addNum;
+    orderAmt.innerHTML = newTotal;
+    //<span>&#x24;</span>
 };
 
 
@@ -35,8 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
         itemChose = getCheckedRadio(pModal);
 
         if ( (itemCount>0)&& (itemChose !=null) ) {
-
             console.log('Adding ' + itemCount + ' ' + itemChose[1] + ' to cart');
+            var NewItem = document.createElement('input');
+            NewItem.setAttribute("type","text");
+            NewItem.setAttribute("class","form-control new-cart-item");
+            NewItem.setAttribute("placeholder",'Adding ' + itemCount + ' ' + itemChose[1] + ' to cart')
+            NewItem.readOnly = true;
+
+            document.querySelector("#order-list").appendChild(NewItem);
+            updateTotal(itemChose[1]);
+
         }
     };
   });

@@ -13,12 +13,27 @@
     font-weight:bold;
 }
 
-.add-min-quan {
-    margin-left:10px;
-    margin-right:10px;
-
+.checkout-cart {
+    border: solid;
+    border-style:thin;
+    border-color: #D13742;
+    border-radius:8px;
+    background-color: #F0BFC2;
 }
 
-.add-min-quan:active {
-    color:#007BFF;
+.checkout-cart h1 {
+    margin-top: 20px;
+}
+
+#btn-place-order {
+    margin-bottom: 10px;
+}
+.new-cart-item {
+    font-size:10px;
+    font-size: italic;
+    color:black;
+    padding:4px;
+    margin-bottom:2px;
+
+
 }
