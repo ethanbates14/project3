@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
 {% block title %}
     User Registration
@@ -7,7 +7,7 @@
 {% block body %}
 {% if user.is_authenticated %}
 <div class="container text-center">
-  <div class="row align-items-cente">
+  <div class="row align-items-center">
     <div class="col"></div>
     <div class="col-sm-4">
       <div class="alert alert-primary" role="alert">Already Logged In!</div>
@@ -17,22 +17,26 @@
 </div>
 {% else %}
 <div class="container text-center">
-  <div class="row align-items-cente">
+  <div class="row align-items-center">
     <div class="col"></div>
     <div class="col-sm-4">
-      <h2 class="display-3">Register</h2>
-      <form action="/register/" method="POST">
+      <h2 class="display-3 ita_header">Register</h2>
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
         <div class="form-group">
           <label for="firstname"></label>
-          <input type="text" class="form-control" name="firstname" placeholder="First Name">
+          <input type="text" class="form-control" name="firstname" autocomplete="off" placeholder="First Name" required>
           <label for="lastname"></label>
-          <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+          <input type="text" class="form-control" name="lastname" autocomplete="off" placeholder="Last Name" required>
+          <label for="user-email"></label>
+          <input type="email" class="form-control" name="email" autocomplete="off" placeholder="Email" required>
+
           <label for="username"></label>
-          <input type="username" class="form-control" name="username" placeholder="Username">
+          <input type="username" class="form-control" name="username" autocomplete="off" placeholder="Username" required>
           <label for="password"></label>
-          <input type="password" class="form-control" name="password" placeholder="Password">
+          <input type="password" class="form-control" name="password" autocomplete="off" placeholder="Password" required>
           <br>
-          <button type="submit" class="btn btn-primary btn-lg">Register</button>
+          <button type="submit" class="btn btn-outline-secondary btn-lg">Register</button>
         </div>
       </form>
     </div>
